@@ -12,13 +12,13 @@ Download NodeJS version v20.11.x onwards.
 
 Install node packages:
 ```bash
-    npm install
+npm install
 ```
 
 ## Run Locally
 
 ```bash
-    npm run dev
+npm run dev
 ```
 
 After running the script, the local server will start up on port 5173. Ex: [text](http://localhost:5173/)

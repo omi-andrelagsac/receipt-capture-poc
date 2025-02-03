@@ -21,4 +21,4 @@ npm install
 npm run dev
 ```
 
-After running the script, the local server will start up on port 5173. Ex: [text](http://localhost:5173/)
+After running the script, the local server will start up on port 5173. Ex: [http://localhost:5173/](http://localhost:5173/)

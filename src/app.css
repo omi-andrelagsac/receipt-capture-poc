@@ -1,3 +1,52 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/utilities'
+@import 'tailwindcss/utilities';
+
+html, body {
+    font-size: 16px;
+}
+
+@font-face {
+    font-family: "Henry Sans";
+    font-weight: 300;
+    src: url("https://cdn.smop.asia/uploads/fonts/HenrySans-Light.ttf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Henry Sans";
+    font-weight: 400;
+    src: url("https://cdn.smop.asia/uploads/fonts/HenrySans-Regular.ttf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Henry Sans";
+    font-weight: 500;
+    src: url("https://cdn.smop.asia/uploads/fonts/HenrySans-Medium.ttf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Henry Sans";
+    font-weight: 600;
+    src: url("https://cdn.smop.asia/uploads/fonts/HenrySans-Bold.ttf") format("opentype");
+  }
+  
+  @font-face {
+    font-family: "Henry Sans";
+    font-weight: 700;
+    src: url("https://cdn.smop.asia/uploads/fonts/HenrySans-Black.ttf") format("opentype");
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+input {
+  user-select: initial;
+  -webkit-user-select: initial;
+  cursor: initial;
+}

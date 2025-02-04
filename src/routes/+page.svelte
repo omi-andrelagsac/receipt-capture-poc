@@ -15,7 +15,7 @@
 		<Button click={() => handleReturnToHomepage()}>
 			<Icon src={ArrowLeft} size="20" color="white" />
 		</Button>
-		<HeaderTitle>SM Receipt Capture</HeaderTitle>
+		<HeaderTitle>SM Receipt Capture POC</HeaderTitle>
 		<Button click={() => handleReturnToHomepage()}>
 			<Icon src={Clock} size="20" color="white" />
 		</Button>

@@ -10,18 +10,26 @@
 
 	async function startCamera() {
 		try {
-			stream = await navigator.mediaDevices.getUserMedia({
+			const constraints = {
 				audio: false,
 				video: {
-					facingMode: 'environment'
+					facingMode: 'environment' // Rear camera
 				}
-			});
+			};
+
+			const permission = await navigator.permissions.query({ name: 'camera' as PermissionName });
+			if (permission.state === 'denied') {
+				throw new Error('Camera permission denied');
+			}
+
+			stream = await navigator.mediaDevices.getUserMedia(constraints);
+			console.log(stream);
 			if (videoElement) {
 				videoElement.srcObject = stream;
+				await videoElement.play(); // Ensure playback starts
 			}
 		} catch (error) {
 			console.error('Error accessing camera:', error);
-			throw new Error('Error accessing camera');
 		}
 	}
 
@@ -48,8 +56,13 @@
 </script>
 
 <div class="relative w-full h-full">
-	<video bind:this={videoElement} autoplay class="w-full h-full object-cover aspect-video">
-		<track kind="captions" src="captions.vtt" srclang="en" label="English" />
+	<video
+		bind:this={videoElement}
+		autoplay
+		playsinline
+		class="w-full h-full object-cover aspect-video"
+	>
+		<!-- <track kind="captions" src="captions.vtt" srclang="en" label="English" /> -->
 	</video>
 	<canvas bind:this={canvasElement} class="hidden"></canvas>
 

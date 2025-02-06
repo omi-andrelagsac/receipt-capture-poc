@@ -1,13 +1,14 @@
-<script>
+<script lang="ts">
 	import Container from '$lib/components/common/Container.svelte';
 	import { Icon } from '@steeze-ui/svelte-icon';
-	import { ArrowLeft, Clock } from '@steeze-ui/heroicons';
+	import { ArrowLeft } from '@steeze-ui/heroicons';
 	import Button from '$lib/components/button/Button.svelte';
 	import { handleReturnToHomepage } from '$lib/utils';
 	import HeaderTitle from '$lib/components/common/HeaderTitle.svelte';
 	import Body from '$lib/components/common/Body.svelte';
 	import VideoCamera from './components/VideoCamera.svelte';
 	import AppBar from '$lib/components/common/AppBar.svelte';
+	import HistoryModal from './components/HistoryModal.svelte';
 </script>
 
 <Container>
@@ -16,11 +17,10 @@
 			<Icon src={ArrowLeft} size="20" color="white" />
 		</Button>
 		<HeaderTitle>SM Receipt Capture POC</HeaderTitle>
-		<Button click={() => handleReturnToHomepage()}>
-			<Icon src={Clock} size="20" color="white" />
-		</Button>
+		<div></div>
 	</AppBar>
 	<Body>
 		<VideoCamera />
 	</Body>
 </Container>
+<HistoryModal />

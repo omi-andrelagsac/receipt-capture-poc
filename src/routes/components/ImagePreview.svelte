@@ -1,15 +1,10 @@
 <script lang="ts">
 	import Button from '$lib/components/button/Button.svelte';
-	import { ArrowRightCircle, XCircle } from '@steeze-ui/heroicons';
-	import { Icon } from '@steeze-ui/svelte-icon';
-
-	let { capturedImage = $bindable(), recapture, confirmCapture } = $props();
+	let { capturedImage = $bindable(), submit, recapture } = $props();
 </script>
 
 <img src={capturedImage} alt="" class="absolute inset-0 w-full h-full object-cover shadow-lg" />
-<Button click={recapture} class="absolute top-5 left-5">
-	<Icon src={XCircle} size="50" color="white"></Icon>
-</Button>
-<Button click={confirmCapture} class="absolute bottom-10 right-5">
-	<Icon src={ArrowRightCircle} size="50" color="white"></Icon>
-</Button>
+<div class="absolute bottom-10 w-full flex flex-col md:flex-row gap-4 justify-center items-center">
+	<Button click={recapture} variant="outlined" class="w-full max-w-72 text-xl">Retake Photo</Button>
+	<Button click={submit} variant="basic" class="w-full max-w-72 text-xl">Submit Receipt</Button>
+</div>

@@ -2,6 +2,11 @@
 	import { onMount } from 'svelte';
 	import CaptureButton from './CaptureButton.svelte';
 	import ImagePreview from './ImagePreview.svelte';
+	import { history, openHistoryModal } from '$lib/stores';
+	import dayjs from 'dayjs';
+	import Button from '$lib/components/button/Button.svelte';
+	import { Icon } from '@steeze-ui/svelte-icon';
+	import { Folder } from '@steeze-ui/heroicons';
 
 	let videoElement: HTMLVideoElement;
 	let canvasElement: HTMLCanvasElement;
@@ -45,24 +50,47 @@
 		startCamera();
 	}
 
-	function confirmCapture() {
-		capturedImage = null;
-		startCamera();
+	function openHistory() {
+		openHistoryModal.set(true);
+	}
+
+	function submitReceipt() {
+		const now = dayjs().format('YYYY-MM-DD hh:mm A');
+		let newHistory: any = [...$history];
+		newHistory.push({
+			date: now,
+			image: capturedImage
+		});
+
+		history.set(newHistory);
+		recapture();
+	}
+
+	function closeHistoryModal() {
+		openHistoryModal.subscribe((isOpen) => {
+			if (!isOpen && capturedImage) {
+				recapture();
+			}
+		});
 	}
 
 	onMount(() => {
 		startCamera();
+		closeHistoryModal();
 	});
 </script>
 
 <div class="relative w-full h-full">
+	<Button click={openHistory} class="absolute top-5 right-5 z-40">
+		<Icon src={Folder} size="50" color="white"></Icon>
+	</Button>
 	<video
 		bind:this={videoElement}
 		autoplay
 		playsinline
 		class="w-full h-full object-cover aspect-video"
 	>
-		<!-- <track kind="captions" src="captions.vtt" srclang="en" label="English" /> -->
+		<!-- <track kind="captions" src="captions.vtt" srclang="en" label="English" hidden /> -->
 	</video>
 	<canvas bind:this={canvasElement} class="hidden"></canvas>
 
@@ -76,10 +104,6 @@
 	{/if}
 
 	{#if capturedImage}
-		<ImagePreview
-			bind:capturedImage
-			recapture={() => recapture()}
-			confirmCapture={() => confirmCapture()}
-		/>
+		<ImagePreview bind:capturedImage recapture={() => recapture()} submit={() => submitReceipt()} />
 	{/if}
 </div>

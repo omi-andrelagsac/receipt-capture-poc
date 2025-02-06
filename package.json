@@ -42,7 +42,9 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
-		"@steeze-ui/svelte-icon": "^1.6.2"
+		"@steeze-ui/svelte-icon": "^1.6.2",
+		"dayjs": "^1.11.13",
+		"postcss": "^8.5.1"
 	},
 	"lint-staged": {
 		"*.svelte": "prettier --plugin-search-dir --write",

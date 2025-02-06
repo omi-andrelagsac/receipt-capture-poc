@@ -90,7 +90,7 @@
 		playsinline
 		class="w-full h-full object-cover aspect-video"
 	>
-		<track kind="captions" src="captions.vtt" srclang="en" label="English" hidden />
+		<!-- <track kind="captions" src="captions.vtt" srclang="en" label="English" hidden /> -->
 	</video>
 	<canvas bind:this={canvasElement} class="hidden"></canvas>
 

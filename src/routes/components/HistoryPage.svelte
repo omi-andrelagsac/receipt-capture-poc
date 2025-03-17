@@ -14,15 +14,15 @@
 </script>
 
 {#if historyList.length > 0}
-	<div class="bg-sm-light-border rounded-t-2xl h-full">
-		<div
-			class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-3 rounded-t-2xl overflow-y-scroll"
-		>
-			{#each historyList as list}
-				<div>
-					<img src={list.image} alt="Captured Receipt" class="w-full rounded-lg shadow" />
-				</div>
-			{/each}
+	<div class="bg-sm-light-border rounded-t-2xl h-full flex flex-col">
+		<div class="flex-1 overflow-y-auto p-3">
+			<div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+				{#each historyList as list}
+					<div>
+						<img src={list.image} alt="Captured Receipt" class="w-full rounded-lg shadow" />
+					</div>
+				{/each}
+			</div>
 		</div>
 		<Button
 			click={handleOpenCamera}
@@ -32,7 +32,7 @@
 		</Button>
 	</div>
 {:else}
-	<div class="h-full grid content-center">
+	<div class="h-screen flex flex-col justify-center items-center">
 		<div class="flex flex-col items-center justify-center gap-2 bg-sm-white p-3">
 			<NoImageHistory />
 			<span class="font-medium">No Uploaded Receipt</span>

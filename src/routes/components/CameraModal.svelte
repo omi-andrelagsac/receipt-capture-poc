@@ -16,7 +16,6 @@
 	let { openCamera = $bindable() } = $props();
 
 	$effect(() => {
-		console.log(openCamera);
 		if (openCamera) {
 			startCamera();
 		} else {
